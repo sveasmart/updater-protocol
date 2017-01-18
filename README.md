@@ -2,7 +2,7 @@
 
 This is the protocol used between Device Updaters and the Updater Hub. All methods are HTTP GET requests.
 
-##GET Method: "Update Me"
+## GET Method: "Update Me"
 
 The Updater uses this method to find out if it needs to download a new update.
 
@@ -31,10 +31,10 @@ The Updater uses this method to find out if it needs to download a new update.
 
 * The downloadUrl should lead to a zip file that contains a startup.sh.
 * Startup.sh should execute the actual update (whatever that is)
-* Startup.sh can expect an environment variable ```apps_path``` which points to the top-level dir for all apps on the device.
+* Startup.sh can expect an environment variable ```app_root``` which points to the top-level dir for all apps on the device.
 * Startup.sh can expect the current working directory to be the same location as the startup.sh file itself.
 
-##POST Method: "How it worked out"
+## POST Method: "How it worked out"
 
 The Updater uses this method to tell the hub about an update that was executed.
 

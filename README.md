@@ -6,7 +6,7 @@ This is the protocol used between Device Updaters and the Updater Hub.
 
 The Updater uses this method to find out if it needs to download a new update.
 
-**Request Path:** ```/updateme```
+**Request path:** ```/updateme```
 
 **Request parameters**:
 * ```deviceId``` - the device making the call
@@ -24,8 +24,8 @@ The Updater uses this method to find out if it needs to download a new update.
 ```
 {
   status: "updateNeeded",
-  snapshotId: 26,
-  downloadUrl: http://x.y.com/file.zip
+  snapshotId: "26",
+  downloadUrl: "http://x.y.com/file.zip"
 }
 ```
 
@@ -38,13 +38,23 @@ The Updater uses this method to find out if it needs to download a new update.
 
 The Updater uses this method to tell the hub about an update that was executed.
 
-**Request Path:** ```/howitworkedout```
+**Request path:** ```/howitworkedout```
 
-**Request parameters**:
-* ```deviceId``` - the device making the call
-* ```snapshotId```- the snapshot that it was asked to upgrade to.
-* ```success``` - true if the update was completed successfully, false if not
-* ```output``` - the stream output from the update.sh script
+**Request body**:
+```
+{
+    deviceId: "xyz",
+    snapshotId: "26,
+    success: "true",
+    output: "Ansible bla bla bla... Done!"
+}
+```
+
+
+* ```deviceId``` = the device making the call
+* ```snapshotId``` = the snapshot that it was asked to upgrade to.
+* ```success``` = true if the update was completed successfully, false if not
+* ```output``` = the stream output from the update.sh script
 
 **Response:**
 ```

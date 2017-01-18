@@ -1,6 +1,8 @@
 # Updater protocol
 
-This is the protocol used between Device Updaters and the Updater Hub.
+This is the protocol used between [Device Updaters](https://github.com/sveasmart/updater) and the Updater Hub.
+
+See [Device Updater - design proposal](https://docs.google.com/document/d/1hymcpIQcGWWvBv703QUF6-MWEHL1M5ZPsYgwNP1DiUQ/edit#heading=h.uui7wxm0553m) for context.
 
 ## HTTP GET Method: "Update Me"
 

@@ -32,6 +32,7 @@ The Updater uses this method to find out if it needs to download a new update.
 ```
 
 * The downloadUrl should lead to a zip file that contains an update.sh.
+* update.sh should either be in the root folder of the zip, or one folder below.
 * update.sh should execute the actual update (whatever that is)
 * update.sh can expect an environment variable ```apps_root``` which points to the top-level dir for all apps on the device.
 * update.sh can expect the current working directory to be the same location as the update.sh file itself.

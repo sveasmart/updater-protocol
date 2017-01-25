@@ -28,7 +28,7 @@ The Updater uses this method to find out if it needs to download a new update.
   status: "updateNeeded",
   snapshotId: "26",
   downloadUrl: "http://x.y.com/file.zip"
-
+}
 ```
 
 * The downloadUrl should lead to a zip file that contains an update.sh.
@@ -36,6 +36,34 @@ The Updater uses this method to find out if it needs to download a new update.
 * update.sh should execute the actual update (whatever that is)
 * update.sh can expect an environment variable ```apps_root``` which points to the top-level dir for all apps on the device.
 * update.sh can expect the current working directory to be the same location as the update.sh file itself.
+
+The hub may provide an .sh file directly, instead of a zip. Like this:
+
+```
+{
+  status: "updateNeeded",
+  snapshotId: "26",
+  downloadUrl: "http://x.y.com/update.sh"
+  downloadType: "sh"
+}
+```
+
+* downloadType should be "sh" or "zip". If not provided, then "zip" is considered the default.
+
+The hub may also provide config parameters:
+```
+{
+  status: "updateNeeded",
+  snapshotId: "26",
+  downloadUrl: "http://x.y.com/update.sh"
+  downloadType: "sh"
+  config: {
+    meterName: "123456"
+  }
+}
+```
+
+* update.sh can expect to receive the config parameters as environment variables.
 
 ## HTTP POST Method: "How it worked out"
 

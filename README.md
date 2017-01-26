@@ -45,7 +45,7 @@ The hub may provide an .sh file directly, instead of a zip. Like this:
 {
   status: "updateNeeded",
   snapshotId: "26",
-  downloadUrl: "http://x.y.com/update.sh"
+  downloadUrl: "http://x.y.com/update.sh",
   downloadType: "sh"
 }
 ```
@@ -56,7 +56,7 @@ The hub may provide an .sh file directly, instead of a zip. Like this:
 {
   status: "updateNeeded",
   snapshotId: "26",
-  downloadUrl: "http://x.y.com/update.js"
+  downloadUrl: "http://x.y.com/update.js",
   downloadType: "js"
 }
 ```
@@ -70,8 +70,8 @@ The hub may also provide config parameters:
 {
   status: "updateNeeded",
   snapshotId: "26",
-  downloadUrl: "http://x.y.com/update.js"
-  downloadType: "js"
+  downloadUrl: "http://x.y.com/update.js",
+  downloadType: "js",
   config: {
     meterName: "123456"
   }
@@ -87,8 +87,8 @@ The config can be a full json structure, such as:
 {
   status: "updateNeeded",
   snapshotId: "26",
-  downloadUrl: "http://x.y.com/update.js"
-  downloadType: "js"
+  downloadUrl: "http://x.y.com/update.js",
+  downloadType: "js",
   config: {
     meter: {
         meterName: "123456"

@@ -37,6 +37,8 @@ The Updater uses this method to find out if it needs to download a new update.
 * update.sh can expect an environment variable ```apps_root``` which points to the top-level dir for all apps on the device.
 * update.sh can expect the current working directory to be the same location as the update.sh file itself.
 
+### Direct download of SH and JS files
+
 The hub may provide an .sh file directly, instead of a zip. Like this:
 
 ```
@@ -48,22 +50,55 @@ The hub may provide an .sh file directly, instead of a zip. Like this:
 }
 ```
 
-* downloadType should be "sh" or "zip". If not provided, then "zip" is considered the default.
+... or javascript file:
+
+```
+{
+  status: "updateNeeded",
+  snapshotId: "26",
+  downloadUrl: "http://x.y.com/update.js"
+  downloadType: "js"
+}
+```
+
+* downloadType should be "sh" or "js" or "zip". If not provided, then "zip" is considered the default.
+
+### Config parameters
 
 The hub may also provide config parameters:
 ```
 {
   status: "updateNeeded",
   snapshotId: "26",
-  downloadUrl: "http://x.y.com/update.sh"
-  downloadType: "sh"
+  downloadUrl: "http://x.y.com/update.js"
+  downloadType: "js"
   config: {
     meterName: "123456"
   }
 }
 ```
 
-* update.sh can expect to receive the config parameters as environment variables.
+* The update script can expect to receive the the config as a single environment variable called 'config',
+  in stringified JSON format. So in this example, update.js can access it via: `JSON.parse(process.env.config)`
+
+The config can be a full json structure, such as:
+
+```
+{
+  status: "updateNeeded",
+  snapshotId: "26",
+  downloadUrl: "http://x.y.com/update.js"
+  downloadType: "js"
+  config: {
+    meter: {
+        meterName: "123456"
+    },
+    updater: {
+        updateIntervalSeconds: 15
+    }
+  }
+}
+```
 
 ## HTTP POST Method: "How it worked out"
 

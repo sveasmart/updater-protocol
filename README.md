@@ -128,3 +128,23 @@ The Updater uses this method to tell the hub about an update that was executed.
   status: "ok"
 }
 ```
+
+## Changing the update interval
+
+The hub can (optionally) add an `updateInterval` field to tell the updater to use a specific polling interval (in seconds).
+That should override whatever interval the updater was using before.
+
+For example in this Update Me response the hub is asking the updater to check for updates
+every 30 seconds from now on.
+
+```
+{
+  status: "noUpdateNeeded"
+  updateInterval: 30
+}
+```
+
+* Minimum is 1 second. Any value below should be treated as 1 second.
+* Maximum is 24 hours. Any value above that should be treated as 24 hours.
+* If the updater receives an invalid (non-numeric) value, it should log and ignore it.
+  It should definitely not crash or stop checking for updates!

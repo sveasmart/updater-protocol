@@ -13,7 +13,7 @@ The Updater uses this method to find out if it needs to download a new update.
 **Request parameters**:
 * ```deviceId``` - the device making the call
 * ```snapshotId```- the current snapshot in that device
-
+* ```updaterVersion```- the version of the updater software, ex "v1.20.3"
 **Response if no update is needed:**
 
 ```

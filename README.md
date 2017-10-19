@@ -99,6 +99,16 @@ The config can be a full json structure, such as:
   }
 }
 ```
+### Requesting an SSH tunnel
+
+The response may include sshTunnelRequested: true, like this:
+```
+{
+  status: "noUpdateNeeded",
+  sshTunnelRequested: true
+}
+```
+If so, that means the Device should open an SSH tunnel to the hub if possible.
 
 ## HTTP POST Method: "How it worked out"
 
